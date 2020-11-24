@@ -1,11 +1,21 @@
 import express from "express";
 
+import "./database/connection";
+
 const app = express();
 
-app.get("/ping", (request, response) => {
-  console.log("pong");
+app.use(express.json());
 
-  return response.json("pong");
+app.get("/users", (request, response) => {
+  console.log(request.query);
+  // return response.json({ message: "pong" });
+});
+
+app.get("/users/:id", (request, response) => {
+  // console.log(request.params);
+  console.log(request.body);
+
+  // return response.json({ message: "pong" });
 });
 
 app.listen(3333);
